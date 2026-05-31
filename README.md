@@ -1,6 +1,6 @@
 # pat2-subtask1
 
-// ============================================================
+// ============================================================ 
 // PAT 2 - Subtask 2: Morse Code Translator
 // This program translates an English message into Morse code.
 // It accepts user input, converts lowercase to uppercase,
