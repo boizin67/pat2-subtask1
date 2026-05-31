@@ -1,99 +1,63 @@
 # pat2-subtask1
-Morse Code Research
-Overview of Morse Code
 
-Morse code is a method of encoding text characters as standardized sequences of two different signal durations called dots (short signals) and dashes (long signals).
+// ============================================================
+// PAT 2 - Subtask 2: Morse Code Translator
+// This program translates an English message into Morse code.
+// It accepts user input, converts lowercase to uppercase,
+// ignores numbers and symbols, and displays the Morse code.
+// ============================================================
 
-Each letter of the alphabet, number, and punctuation symbol is represented by a unique pattern of dots and dashes.
+#include <iostream>
+#include <string>
+#include <cctype>
 
-Morse code can be transmitted through:
+using namespace std;
 
-Sound signals
-Light flashes
-Electrical pulses
-Radio signals
+int main() {
 
-It is one of the earliest forms of long-distance electronic communication.
-Historical Context
+    // Morse code array for letters A-Z
+    string morseCode[26] = {
+        ".-", "-...", "-.-.", "-..", ".", "..-.",
+        "--.", "....", "..", ".---", "-.-", ".-..",
+        "--", "-.", "---", ".--.", "--.-", ".-.",
+        "...", "-", "..-", "...-", ".--", "-..-",
+        "-.--", "--.."
+    };
 
-Morse code was developed in the early 1830s by Samuel Morse and Alfred Vail during the development of the electric telegraph.
+    string message;
+    string fullMorse = "";
 
-Before Morse code, long-distance communication relied on physical delivery methods such as:
+    cout << "======================================" << endl;
+    cout << "       MORSE CODE TRANSLATOR" << endl;
+    cout << "======================================" << endl;
 
-Letters
-Messengers
-Signal flags
+    cout << "Enter a message: ";
+    getline(cin, message);
 
-In 1844, Samuel Morse sent the first official telegraph message:
+    cout << "\n--- Morse Code for Each Letter ---\n" << endl;
 
-“What hath God wrought”
+    for (int i = 0; i < message.length(); i++) {
 
-This message was sent from Washington D.C. to Baltimore.
+        char currentChar = toupper(message[i]);
 
-Morse code later became the international standard for military, maritime, and emergency communication.
-How Morse Code Works
+        if (currentChar >= 'A' && currentChar <= 'Z') {
 
-Morse code works by assigning each character a pattern of:
+            int index = currentChar - 'A';
 
-Dot (.) = Short signal
-Dash (-) = Long signal
+            cout << currentChar << ": " << morseCode[index] << endl;
 
-Timing rules:
+            if (fullMorse != "") {
+                fullMorse += "   ";
+            }
 
-Space between parts of same letter = 1 unit
-Space between letters = 3 units
-Space between words = 7 units
+            fullMorse += morseCode[index];
+        }
+    }
 
-Example:
+    cout << "\n--- Full Morse Code Message ---" << endl;
+    cout << fullMorse << endl;
 
-A = .-
-B = -...
-C = -.-.
+    cout << "\n======================================" << endl;
 
-| Letter | Morse Code |
-| ------ | ---------- |
-| A      | .-         |
-| B      | -...       |
-| C      | -.-.       |
-| D      | -..        |
-| E      | .          |
-| F      | ..-.       |
-| G      | --.        |
-| H      | ....       |
-| I      | ..         |
-| J      | .---       |
-| K      | -.-        |
-| L      | .-..       |
-| M      | --         |
-| N      | -.         |
-| O      | ---        |
-| P      | .--.       |
-| Q      | --.-       |
-| R      | .-.        |
-| S      | ...        |
-| T      | -          |
-| U      | ..-        |
-| V      | ...-       |
-| W      | .--        |
-| X      | -..-       |
-| Y      | -.--       |
-| Z      | --..       |
-Example Words
-
-HELLO
-.... . .-.. .-.. ---
-
-SOS
-... --- ...
-
-CODE
--.-. --- -.. .
-
-References
-Encyclopaedia Britannica – Morse Code
-International Telecommunication Union (ITU)
-Smithsonian Institution Archives
-Wikipedia – Morse Code
-
-
-
+    return 0;
+}
