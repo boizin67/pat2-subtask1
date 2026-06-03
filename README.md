@@ -52,6 +52,21 @@ int main() {
     cout << fullMorse << endl;
 
     cout << "\n======================================" << endl;
+ if (fullMorse != "") {
+                fullMorse += "   ";
+            }
+
+            fullMorse += morseCode[index];
+        }
+    }
+
+    cout << "\n--- Full Morse Code Message ---" << endl;
+    cout << fullMorse << endl;
+
+    cout << "\n======================================" << endl;
+
+    return 0;
+}    
 
     return 0;
 }
